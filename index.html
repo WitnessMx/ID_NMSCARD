@@ -7241,7 +7241,7 @@ document.getElementById("Selector").onchange = changeListener;
                         document.getElementById("previewImg").appendChild(canvas);
                         anchorTag.download = "filename.jpg";
                         console.log(anchorTag.href);
-                        //anchorTag.href = canvas.toDataURL();
+                        anchorTag.href = canvas.toDataURL();
                         anchorTag.target = '_blank';
                         anchorTag.click();
                     });
