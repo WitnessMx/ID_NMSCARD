@@ -7178,13 +7178,21 @@
             margin-left: -992px;
            font-size: 15px;
         }
-        .foto_1{
-            object-fit: cover;
-            position: absolute;
-            margin-top: 275px;
-            margin-left: -1053px;
+        .foto_11{
             width: 411px;
-            height: 454px;
+            height: 456px;
+            overflow: hidden;
+            margin-top: -417px;
+            margin-left:25px;
+            text-align: center;
+        
+
+        }
+        .foto_1{
+            position:relative;
+            height:100% ;
+            left: auto;
+            top: auto;
         }
         .foto2{
             position: absolute;
@@ -7232,6 +7240,13 @@
             border-radius: 15px;
             margin-top: 20px;
         }
+        #moverDerecha{
+            font-size: 20pt;
+        }
+        #moverIzquierda{
+            font-size: 30pt;
+        }
+        
         
         
     </style>
@@ -7260,8 +7275,9 @@
         <img class="raza_1" id="raza" src="#" alt="raza" />
         <input class="codigo"  type="text"  >
         
-       
+       <div class="foto_11">  
         <img class="foto_1" id="blah" src="#" alt="seleccionar"  />
+        </div>
         
         
         <input class="sel_foto" id="select_foto" type='file' name="seleccionar" onchange="readIMG(this);" />
@@ -7269,7 +7285,10 @@
         
                     <!--<p style="color: #b87e01;font-family: Arial, Helvetica, sans-serif; font-size: 78px;margin-top: 84px;margin-left: 483px;">qwer-qwer-qwert</p>-->
     </div>
-           
+    <div>
+        <input type="button" id="moverDerecha" style="margin-top: 10px;" value="<---" onclick="MoverIzquierda();">
+        <input type="button" id="moverIzquierda" style="margin-top: 10px;" value="--->" onclick="MoverDerecha();">
+    </div>       
 
     <div class="instrucciones">
         <p>1.- Escribe tu Nombre de Jugador de la Plataforma Seleccionada</p>
@@ -7333,7 +7352,8 @@
             }
         
         
-        
+                var foto1;
+                var izq;
         
                 function readIMG(input) {
                     //input.setAttribute("display","none");
@@ -7345,10 +7365,25 @@
                                 .attr('src', e.target.result);
                             $('#select_foto').hide();
                         };
-        
+                        foto1= document.getElementById("blah");
+                        parseInt(foto1.style.getPropertyValue("left")==""?izq=1:izq=parseInt(foto1.style.getPropertyValue("left")));
                         reader.readAsDataURL(input.files[0]);
                     }
                 }
+        
+            function MoverDerecha(){
+                            izq=izq+3;
+                            console.log(izq);
+                            foto1.style.setProperty("left", izq);
+
+                };
+        
+                function MoverIzquierda(){
+                            izq=izq-3;
+                            console.log(izq);
+                            foto1.style.setProperty("left", izq);
+
+                };
 
                 
         
